@@ -11,13 +11,14 @@ $ sudo cmake3 --version
 cmake3 version 3.14.6
 ```
 
-## Boost C++
+## Boost C++ Library
 
 [boost_1_71_0.tar.bz2](https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.bz2)
 
 ```bash
 $ cd
 $ sudo yum install -y bzip2
+$ wget https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.bz2
 $ tar --bzip2 -xf boost_1_71_0.tar.bz2
 $ cd boost_1_71_0
 $ sudo ./bootstrap.sh
@@ -27,9 +28,11 @@ $ cd
 
 ## Intel TBB
 
+[CMake for Intel TBB](https://github.com/os-popt/tbb), forked from [CMake for Intel TBB](https://github.com/wjakob/tbb)
+
 ```bash
 $ cd
-$ git clone https://github.com/wjakob/tbb.git
+$ git clone https://github.com/os-popt/tbb.git
 $ cd tbb/build
 $ cmake3 ..
 $ make -j
@@ -42,15 +45,16 @@ $ cd
 ```bash
 $ sudo yum install -y eigen3-devel
 Installed:
-  eigen3-devel.noarch 0:3.3.4-6.el7
+  eigen3-devel.noarch 0:3.3.4-7.el7
 ```
 
 ## pagmo2
 
 ```bash
 $ cd
-$ git clone https://github.com/esa/pagmo2.git
-$ cd pagmo2/
+$ wget https://github.com/esa/pagmo2/archive/v2.13.0.tar.gz
+$ tar -zvxf v2.13.0.tar.gz
+$ cd pagmo2-2.13.0/
 $ mkdir build
 $ cd build
 $ cmake3 ../ -DPAGMO_BUILD_TESTS=ON -DPAGMO_WITH_EIGEN3=ON
@@ -58,6 +62,10 @@ $ cmake3 --build .
 $ sudo cmake3 --build . --target install
 $ cmake3 --build . --target test
 $ cd
+$ ls /usr/local/lib | grep pagmo
+libpagmo.so
+libpagmo.so.3
+libpagmo.so.3.0
 
 $ vi ~/.bash_profile
 # Add path for pagmo2
